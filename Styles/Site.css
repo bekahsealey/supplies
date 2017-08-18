@@ -187,6 +187,15 @@ div.menu ul li a:active
     text-decoration: none;
 }
 
+/* MANAGE MENU   
+----------------------------------------------------------*/
+.ManageMenu 
+{
+  width: 200px;
+  float: left;
+  margin-right: 20px;
+}
+
 /* FORM ELEMENTS   
 ----------------------------------------------------------*/
 
@@ -234,6 +243,17 @@ input.passwordEntry
 div.accountInfo
 {
     width: 42%;
+}
+
+table 
+{
+  margin: 20px;
+}
+
+td 
+{
+  padding: 4px;
+  line-height: 1.4;
 }
 
 /* MISC  

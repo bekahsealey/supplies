@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Manage.master.cs" Inherits="Manage_Manage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+  <div class="ManageMenu menu">
+    <ul>
+      <li><a href="~/Manage/Default.aspx" runat="server">Manage Home</a></li>
+      <li><a href="~/Manage/Supplies.aspx" runat="server">Manage Supplies</a></li>
+      <li><a href="~/Manage/Categories.aspx" runat="server">Manage Categories</a></li>
+      <li><a href="~/Manage/Schools.aspx" runat="server">Manage Schools</a></li>
+      <li><a href="~/Manage/Grades.aspx" runat="server">Manage Grades</a></li>
+      <li><a href="~/Manage/Lists.aspx" runat="server">Manage Lists</a></li>
+    </ul>
+  </div>
+  <div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+  </div>
+  
+</asp:Content>
+
