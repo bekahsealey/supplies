@@ -11,6 +11,9 @@
       <asp:BoundField DataField="NAME" HeaderText="NAME" SortExpression="NAME" />
       <asp:BoundField DataField="CITY" HeaderText="CITY" SortExpression="CITY" />
       <asp:BoundField DataField="STATE" HeaderText="STATE" SortExpression="STATE" />
+      <asp:HyperLinkField DataNavigateUrlFields="ID" 
+        DataNavigateUrlFormatString="AddEditSchoolGrades.aspx?SID={0}" 
+        HeaderText="GRADES" Text="View or Edit Grades" />
     </Columns>
   </asp:GridView>
   <h3>Add a New School:</h3>
