@@ -248,6 +248,7 @@ div.accountInfo
 table 
 {
   margin: 20px;
+  max-width: 100%;
 }
 
 td, th
