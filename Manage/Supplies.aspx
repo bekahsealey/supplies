@@ -6,8 +6,7 @@
   EmptyDataText="There are no data records to display." AllowPaging="True" 
     AllowSorting="True" PageSize="25">
   <Columns>
-    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
-      ShowSelectButton="True" />
+    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
     <asp:BoundField DataField="ITEM" HeaderText="ITEM" SortExpression="ITEM" />
     <asp:BoundField DataField="DESCRIPTION" HeaderText="DESCRIPTION" 
       SortExpression="DESCRIPTION" />
@@ -26,6 +25,7 @@
       <asp:CommandField ShowInsertButton="True" />
     </Fields>
   </asp:DetailsView>
+  <a href="AddEditList.aspx" runat="server" id="Return" visible="false">Return to List</a>
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
   ConnectionString="<%$ ConnectionStrings:SuppliesConnectionString1 %>" 
   DeleteCommand="DELETE FROM [SUPPLY] WHERE [ID] = @ID" 
