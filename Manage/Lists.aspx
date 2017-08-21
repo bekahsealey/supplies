@@ -3,26 +3,38 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
   <asp:DropDownList ID="selectSchool" runat="server" AppendDataBoundItems="True" 
     AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="SCHOOL_NAME" 
-    DataValueField="ID">
+    DataValueField="ID" 
+    onselectedindexchanged="selectSchool_SelectedIndexChanged">
     <asp:ListItem Value="">Select your School</asp:ListItem>
   </asp:DropDownList>
-  <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
+  <asp:GridView ID="GridView1" runat="server" 
     AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource2" 
     PageSize="25">
     <Columns>
+      <asp:BoundField DataField="ID" HeaderText="ID" 
+        SortExpression="ID" InsertVisible="False" ReadOnly="True" Visible="False" />
+      <asp:BoundField DataField="GRADE_LEVEL" HeaderText="GRADE_LEVEL" 
+        SortExpression="GRADE_LEVEL" />
+      <asp:BoundField DataField="TEACHER" 
+        HeaderText="TEACHER" SortExpression="TEACHER" 
+        NullDisplayText="Not Entered" />
+      <asp:BoundField DataField="MEMO" HeaderText="MEMO" 
+        SortExpression="MEMO" NullDisplayText="Not Entered" />
+      <asp:BoundField DataField="GRADE_UPDATE" 
+        HeaderText="GRADE_UPDATE" SortExpression="GRADE_UPDATE" 
+        DataFormatString="{0:d}" />
       <asp:HyperLinkField DataNavigateUrlFields="ID" 
-        DataNavigateUrlFormatString="AddEditList.aspx?ID={0}" 
-        DataTextField="GRADE_LEVEL" HeaderText="GRADE LEVEL" />
-      <asp:BoundField DataField="TEACHER" HeaderText="TEACHER" 
-        SortExpression="TEACHER" />
-      <asp:BoundField DataField="UPDATE_DATE_TIME" DataFormatString="{0:g}" 
-        HeaderText="LAST UPDATE" SortExpression="UPDATE_DATE_TIME" />
-      <asp:CommandField HeaderText="DELETE" ShowDeleteButton="True" />
+        DataNavigateUrlFormatString="AddEditList.aspx?SGID={0}" 
+        HeaderText="Manage Lists" Text="Create or Update List" />
     </Columns>
   </asp:GridView>
+  <a href="AddEditSchoolGrades.aspx" runat="server" id="SchoolLink" visible="false">Insert New Grade for this School</a>
   <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
     ConnectionString="<%$ ConnectionStrings:SuppliesConnectionString1 %>" 
-    SelectCommand="SELECT GRADE.GRADE_LEVEL, GRADE.SORT_ORDER, SCHOOL_GRADE.TEACHER, SCHOOL_GRADE.ID, GRADE_SUPPLY_LIST.UPDATE_DATE_TIME FROM GRADE INNER JOIN SCHOOL_GRADE ON GRADE.ID = SCHOOL_GRADE.GRADE_ID INNER JOIN GRADE_SUPPLY_LIST ON SCHOOL_GRADE.ID = GRADE_SUPPLY_LIST.SCHOOL_GRADE_ID WHERE (SCHOOL_GRADE.SCHOOL_ID = @SCHOOL_ID) ORDER BY GRADE.SORT_ORDER">
+    
+    
+    
+    SelectCommand="SELECT GRADE.GRADE_LEVEL, GRADE.SORT_ORDER, SCHOOL_GRADE.TEACHER, SCHOOL_GRADE.ID, SCHOOL_GRADE.UPDATE_DATE_TIME AS GRADE_UPDATE, SCHOOL_GRADE.MEMO FROM GRADE INNER JOIN SCHOOL_GRADE ON GRADE.ID = SCHOOL_GRADE.GRADE_ID WHERE (SCHOOL_GRADE.SCHOOL_ID = @SCHOOL_ID) ORDER BY GRADE.SORT_ORDER">
     <SelectParameters>
       <asp:ControlParameter ControlID="selectSchool" Name="SCHOOL_ID" 
         PropertyName="SelectedValue" />
